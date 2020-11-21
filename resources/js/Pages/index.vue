@@ -68,7 +68,7 @@ export default {
         email: this.form.email,
         phone: this.form.phone,
         cpf: this.form.cpf,
-        id:Date.now,
+        id:Date.now(),
       };
       this.items.push(my_object);
       this.form.first_name = "";
