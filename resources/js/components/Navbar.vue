@@ -9,10 +9,19 @@
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-navbar-nav class="mr-10">
-          <b-nav-item href="#" class="text-navbar" @click="$bvModal.show('bv-modal-example')">Novo cadastro</b-nav-item>
+          <b-nav-item href="#" class="text-navbar" @click="emitEventModal">Novo cadastro</b-nav-item>
         </b-navbar-nav>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </template>
+<script>
+export default {
+  methods:{
+    emitEventModal(){
+      this.$emit('event-show-modal');
+    },
+  }
+}
+</script>
 

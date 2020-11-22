@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="panel panel-default">
-      <div class="panel-heading">Cadastro de pessoas</div>
       <div class="panel-body">
         <table class="table table-bordered table-striped">
           <thead>
@@ -12,18 +11,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in items" :key="item.id">
-              <td>{{ item.first_name + " " + item.last_name }}</td>
+            <tr v-for="(item, index) in items" :key="item.id">
+              <td>{{ item.fullName}}</td>
               <td>{{ item.email }}</td>
               <td>
                 <div class="row">
                   <div class="col-6">
-                    <b-button pill variant="primary" v-on:click="editeEntry(item.id)">
+                    <b-button pill variant="primary" v-on:click="sendEditeToIndex(index)">
                       <b-icon icon="pencil" aria-hidden="true"></b-icon>
                     </b-button>
                   </div>
                   <div class="col-6">
-                    <b-button pill variant="danger" v-on:click="deleteEntry(item.id)">
+                    <b-button pill variant="danger" v-on:click="sendDeleteToIndex(index)">
                       <b-icon icon="trash-fill" aria-hidden="true"></b-icon>
                     </b-button>
                   </div>
@@ -48,6 +47,14 @@ export default {
   components: {
     BButton,
     BIcon,
+  },
+  methods: {
+    sendDeleteToIndex(index){
+      this.$emit('event-table-delete', index);
+    },
+     sendEditeToIndex(index){
+      this.$emit('event-table-edite', index);
+    },
   },
 };
 </script>
